@@ -8,7 +8,10 @@ function TransactionList({ transactions }: TransactionListProps) {
     <>
       <ul>
         {transactions.map((transaction) => (
-          <li key={transaction.id}>
+          <li
+            style={{ color: transaction.type === 'income' ? 'green' : 'red' }}
+            key={transaction.id}
+          >
             {transaction.category} : {transaction.amount} RUB
           </li>
         ))}
