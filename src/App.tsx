@@ -1,18 +1,27 @@
 import { useState } from 'react';
-import type { Transaction } from './types';
+import type { Transaction, TransactionType } from './types';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 
 function App() {
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    { id: 1, amount: 5000, category: 'Зарплата', type: 'income', date: new Date() },
-    { id: 2, amount: 100, category: 'Кофе', type: 'expense', date: new Date() },
-  ]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const addTransaction = (amount: number, category: string, type: TransactionType) => {
+    const newTransaction: Transaction = {
+      id: Date.now(),
+      date: new Date(),
+      amount,
+      category,
+      type,
+    };
+
+    setTransactions([...transactions, newTransaction]);
+  };
   return (
     <>
       <div>
         <h1>Finance Tracker React</h1>
-        <TransactionForm />
+        <TransactionForm onSubmit={addTransaction} />
         <TransactionList transactions={transactions} />
       </div>
     </>
