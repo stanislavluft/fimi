@@ -13,10 +13,6 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if (!type) {
-      return;
-    }
-
     onSubmit(Number(amount), category, type);
 
     setAmount('');
@@ -34,7 +30,6 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
             onChange={(e) => setAmount(e.target.value)}
             id="inputAmount"
             type="number"
-            name="amount"
             placeholder="Сумма"
             required
           />
@@ -47,7 +42,6 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
             onChange={(e) => setCategory(e.target.value)}
             id="inputCategory"
             type="text"
-            name="category"
             placeholder="Категория"
             required
           />
@@ -56,22 +50,17 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
           style={{ backgroundColor: type === 'income' ? 'gray' : '' }}
           type="button"
           onClick={() => setType('income')}
-          className="type-btn--income"
         >
           Доход
         </button>
-
         <button
           style={{ backgroundColor: type === 'expense' ? 'gray' : '' }}
           type="button"
           onClick={() => setType('expense')}
-          className="type-btn--expense"
         >
           Расход
         </button>
-        <button type="submit" className="btn-submit">
-          Добавить транзакцию
-        </button>
+        <button type="submit">Добавить транзакцию</button>
       </form>
     </>
   );
