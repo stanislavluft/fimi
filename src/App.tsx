@@ -17,12 +17,16 @@ function App() {
 
     setTransactions([...transactions, newTransaction]);
   };
+
+  const deleteTransaction = (id: number) => {
+    setTransactions(transactions.filter((t) => t.id !== id));
+  };
   return (
     <>
       <div>
         <h1>Finance Tracker React</h1>
         <TransactionForm onSubmit={addTransaction} />
-        <TransactionList transactions={transactions} />
+        <TransactionList transactions={transactions} onDelete={deleteTransaction} />
       </div>
     </>
   );

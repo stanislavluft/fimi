@@ -2,8 +2,9 @@ import type { Transaction } from '../types';
 
 interface TransactionListProps {
   transactions: Transaction[];
+  onDelete: (id: number) => void;
 }
-function TransactionList({ transactions }: TransactionListProps) {
+function TransactionList({ transactions, onDelete }: TransactionListProps) {
   return (
     <>
       <ul>
@@ -13,6 +14,7 @@ function TransactionList({ transactions }: TransactionListProps) {
             key={transaction.id}
           >
             {transaction.category} : {transaction.amount} RUB
+            <button onClick={() => onDelete(transaction.id)}>Удалить</button>
           </li>
         ))}
       </ul>
