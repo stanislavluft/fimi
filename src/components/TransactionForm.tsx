@@ -9,6 +9,8 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [type, setType] = useState<TransactionType>('income');
+  const [formDate, setFormDate] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -22,7 +24,25 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {/* Sum Block */}
+        {/* Type Button */}
+        <div>
+          <button
+            style={{ backgroundColor: type === 'income' ? 'gray' : '' }}
+            type="button"
+            onClick={() => setType('income')}
+          >
+            Доход
+          </button>
+          <button
+            style={{ backgroundColor: type === 'expense' ? 'gray' : '' }}
+            type="button"
+            onClick={() => setType('expense')}
+          >
+            Расход
+          </button>
+        </div>
+
+        {/* Amount Block */}
         <div>
           <label htmlFor="inputAmount">Сумма</label>
           <input
@@ -30,10 +50,25 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
             onChange={(e) => setAmount(e.target.value)}
             id="inputAmount"
             type="number"
-            placeholder="Сумма"
+            inputMode="decimal"
+            placeholder="0.00"
+            step="0.01"
             required
           />
         </div>
+
+        {/* Date Block */}
+        <div>
+          <label htmlFor="inputDate">Дата</label>
+          <input
+            value={formDate}
+            onChange={(e) => setFormDate(e.target.value)}
+            id="inputDate"
+            type="datetime-local"
+            required
+          />
+        </div>
+
         {/* Category Block  */}
         <div>
           <label htmlFor="inputCategory">Категория</label>
@@ -42,25 +77,24 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
             onChange={(e) => setCategory(e.target.value)}
             id="inputCategory"
             type="text"
-            placeholder="Категория"
+            placeholder="Например: транспорт"
             required
           />
         </div>
-        <button
-          style={{ backgroundColor: type === 'income' ? 'gray' : '' }}
-          type="button"
-          onClick={() => setType('income')}
-        >
-          Доход
-        </button>
-        <button
-          style={{ backgroundColor: type === 'expense' ? 'gray' : '' }}
-          type="button"
-          onClick={() => setType('expense')}
-        >
-          Расход
-        </button>
-        <button type="submit">Добавить транзакцию</button>
+
+        {/* Description Block  */}
+        <div>
+          <label htmlFor="inputDescription">Комментарий</label>
+          <input
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            id="inputDescription"
+            type="text"
+            placeholder="Например: такси"
+          />
+        </div>
+
+        <button type="submit">Сохранить</button>
       </form>
     </>
   );
