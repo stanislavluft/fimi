@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { Transaction, TransactionType } from './types';
+import type { Transaction, TransactionFormData } from './types';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 
@@ -9,16 +9,13 @@ function App() {
     return storage ? JSON.parse(storage) : [];
   });
 
-  const addTransaction = (amount: number, category: string, type: TransactionType) => {
+  const addTransaction = (formData: TransactionFormData) => {
     const newTransaction: Transaction = {
       id: Date.now(),
-      date: new Date().toISOString(),
-      amount,
-      category,
-      type,
+      ...formData,
     };
 
-    setTransactions([...transactions, newTransaction]);
+    setTransactions((prev) => [...prev, newTransaction]);
   };
 
   const deleteTransaction = (id: number) => {

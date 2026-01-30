@@ -6,4 +6,7 @@ export interface Transaction {
   category: string;
   type: TransactionType;
   date: string;
+  description: string;
 }
+
+export type TransactionFormData = Omit<Transaction, 'id'>;

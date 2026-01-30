@@ -1,24 +1,28 @@
 import { useState, type FormEvent } from 'react';
-import type { TransactionType } from '../types';
+import type { TransactionFormData, TransactionType } from '../types';
 
 interface TransactionFormProps {
-  onSubmit: (amount: number, category: string, type: TransactionType) => void;
+  onSubmit: (formData: TransactionFormData) => void;
 }
 
 function TransactionForm({ onSubmit }: TransactionFormProps) {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [type, setType] = useState<TransactionType>('income');
-  const [formDate, setFormDate] = useState('');
+  const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    onSubmit(Number(amount), category, type);
+    const toIsoDate = new Date(date).toISOString();
+
+    onSubmit({ amount: +amount, category, type, date: toIsoDate, description });
 
     setAmount('');
     setCategory('');
+    setDescription('');
+    setDate('');
   };
 
   return (
@@ -61,8 +65,8 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
         <div>
           <label htmlFor="inputDate">Дата</label>
           <input
-            value={formDate}
-            onChange={(e) => setFormDate(e.target.value)}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             id="inputDate"
             type="datetime-local"
             required
