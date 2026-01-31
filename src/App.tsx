@@ -3,6 +3,7 @@ import type { Operation, OperationFormData } from './types';
 import OperationForm from './components/OperationForm';
 import OperationList from './components/OperationList';
 import Modal from './components/Modal';
+import { v7 as uuidv7 } from 'uuid';
 
 function App() {
   const [operations, setOperations] = useState<Operation[]>(() => {
@@ -18,7 +19,7 @@ function App() {
 
   const addOperation = (formData: OperationFormData) => {
     const newOperation: Operation = {
-      id: Date.now(),
+      id: uuidv7(),
       ...formData,
     };
 
@@ -26,7 +27,7 @@ function App() {
     setIsAddModalOpen(false);
   };
 
-  const deleteOperation = (id: number) => {
+  const deleteOperation = (id: string) => {
     setOperations(operations.filter((t) => t.id !== id));
   };
 

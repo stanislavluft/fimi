@@ -1,11 +1,11 @@
 export type OperationType = 'income' | 'expense';
 
 export interface Operation {
-  id: number;
+  id: string;
   amount: number;
   category: string;
   type: OperationType;
-  date: string;
+  dateTime: string;
   description: string;
 }
 

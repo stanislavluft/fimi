@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import type { OperationFormData, OperationType } from '../types';
+import { format, parseISO } from 'date-fns';
 
 interface OperationFormProps {
   onSubmit: (formData: OperationFormData) => void;
@@ -9,20 +10,22 @@ function OperationForm({ onSubmit }: OperationFormProps) {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [type, setType] = useState<OperationType>('income');
-  const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
+
+  // Date
+  const defaultDate = format(new Date(), "yyyy-MM-dd'T'HH:mm");
+  const [dateTime, setDateTime] = useState(defaultDate);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const toIsoDate = new Date(date).toISOString();
-
-    onSubmit({ amount: +amount, category, type, date: toIsoDate, description });
+    const isoDate = parseISO(dateTime).toISOString();
+    onSubmit({ amount: +amount, category, type, dateTime: isoDate, description });
 
     setAmount('');
     setCategory('');
     setDescription('');
-    setDate('');
+    setDateTime('');
   };
 
   return (
@@ -65,8 +68,8 @@ function OperationForm({ onSubmit }: OperationFormProps) {
         <div>
           <label htmlFor="inputDate">Дата</label>
           <input
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={dateTime}
+            onChange={(e) => setDateTime(e.target.value)}
             id="inputDate"
             type="datetime-local"
             required
