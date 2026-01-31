@@ -1,33 +1,33 @@
 import { useState, useEffect } from 'react';
-import type { Transaction, TransactionFormData } from './types';
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
+import type { Operation, OperationFormData } from './types';
+import OperationForm from './components/OperationForm';
+import OperationList from './components/OperationList';
 import Modal from './components/Modal';
 
 function App() {
-  const [transactions, setTransactions] = useState<Transaction[]>(() => {
+  const [operations, setOperations] = useState<Operation[]>(() => {
     const storage = localStorage.getItem('finance-data');
     return storage ? JSON.parse(storage) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('finance-data', JSON.stringify(transactions));
-  }, [transactions]);
+    localStorage.setItem('finance-data', JSON.stringify(operations));
+  }, [operations]);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const addTransaction = (formData: TransactionFormData) => {
-    const newTransaction: Transaction = {
+  const addOperation = (formData: OperationFormData) => {
+    const newOperation: Operation = {
       id: Date.now(),
       ...formData,
     };
 
-    setTransactions((prev) => [...prev, newTransaction]);
+    setOperations((prev) => [...prev, newOperation]);
     setIsAddModalOpen(false);
   };
 
-  const deleteTransaction = (id: number) => {
-    setTransactions(transactions.filter((t) => t.id !== id));
+  const deleteOperation = (id: number) => {
+    setOperations(operations.filter((t) => t.id !== id));
   };
 
   return (
@@ -37,12 +37,12 @@ function App() {
         <Modal
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
-          modalTitle="Новая Транзакция"
+          modalTitle="Новая Операция"
         >
-          <TransactionForm onSubmit={addTransaction} />
+          <OperationForm onSubmit={addOperation} />
         </Modal>
-        <button onClick={() => setIsAddModalOpen(true)}>Новая Транзакция</button>
-        <TransactionList transactions={transactions} onDelete={deleteTransaction} />
+        <button onClick={() => setIsAddModalOpen(true)}>Новая Операция</button>
+        <OperationList operations={operations} onDelete={deleteOperation} />
       </div>
     </>
   );

@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from 'react';
-import type { TransactionFormData, TransactionType } from '../types';
+import type { OperationFormData, OperationType } from '../types';
 
-interface TransactionFormProps {
-  onSubmit: (formData: TransactionFormData) => void;
+interface OperationFormProps {
+  onSubmit: (formData: OperationFormData) => void;
 }
 
-function TransactionForm({ onSubmit }: TransactionFormProps) {
+function OperationForm({ onSubmit }: OperationFormProps) {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
-  const [type, setType] = useState<TransactionType>('income');
+  const [type, setType] = useState<OperationType>('income');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
 
@@ -104,4 +104,4 @@ function TransactionForm({ onSubmit }: TransactionFormProps) {
   );
 }
 
-export default TransactionForm;
+export default OperationForm;

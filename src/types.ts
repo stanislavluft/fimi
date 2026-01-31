@@ -1,12 +1,12 @@
-export type TransactionType = 'income' | 'expense';
+export type OperationType = 'income' | 'expense';
 
-export interface Transaction {
+export interface Operation {
   id: number;
   amount: number;
   category: string;
-  type: TransactionType;
+  type: OperationType;
   date: string;
   description: string;
 }
 
-export type TransactionFormData = Omit<Transaction, 'id'>;
+export type OperationFormData = Omit<Operation, 'id'>;
