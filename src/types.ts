@@ -10,3 +10,9 @@ export interface Operation {
 }
 
 export type OperationFormData = Omit<Operation, 'id'>;
+
+export type ModalState = { mode: 'closed' } | { mode: 'create' };
+
+export type ModalActions = {
+  addOperation: (formData: OperationFormData) => void;
+};
