@@ -1,20 +1,24 @@
 import { useState, type FormEvent } from 'react';
-import type { OperationFormData, OperationType } from '../types';
+import type { Operation, OperationFormData, OperationType } from '../types';
 import { format, parseISO } from 'date-fns';
 
 interface OperationFormProps {
   onSubmit: (formData: OperationFormData) => void;
+  onDeleteRequest?: (data: Operation) => void;
+  updateData?: Operation | null;
 }
 
-function OperationForm({ onSubmit }: OperationFormProps) {
-  const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
-  const [type, setType] = useState<OperationType>('income');
-  const [description, setDescription] = useState('');
+function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormProps) {
+  const [amount, setAmount] = useState(updateData?.amount || '');
+  const [category, setCategory] = useState(updateData?.category || '');
+  const [type, setType] = useState<OperationType>(updateData?.type || 'income');
+  const [description, setDescription] = useState(updateData?.description || '');
 
   // Date
-  const defaultDate = format(new Date(), "yyyy-MM-dd'T'HH:mm");
-  const [dateTime, setDateTime] = useState(defaultDate);
+  const initialDate = updateData?.dateTime
+    ? format(parseISO(updateData.dateTime), "yyyy-MM-dd'T'HH:mm")
+    : format(new Date(), "yyyy-MM-dd'T'HH:mm");
+  const [dateTime, setDateTime] = useState(initialDate);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -101,7 +105,15 @@ function OperationForm({ onSubmit }: OperationFormProps) {
           />
         </div>
 
-        <button type="submit">Сохранить</button>
+        {/* Save/Delete Button */}
+        <div>
+          <button type="submit">Сохранить</button>
+          {updateData && (
+            <button type="button" onClick={() => onDeleteRequest?.(updateData)}>
+              Удалить
+            </button>
+          )}
+        </div>
       </form>
     </>
   );
