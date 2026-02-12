@@ -6,20 +6,19 @@ interface ConfirmDeleteProps {
 function ConfirmDelete({ onCancel, onConfirm }: ConfirmDeleteProps) {
   return (
     <>
-      <div className="flex flex-col items-center text-center">
-        <h3 className="mt-3 text-lg font-bold">Удалить операцию?</h3>
-        <p className="mt-3 mb-6 max-w-3xs text-xs text-balance">
+      <div className="flex flex-col">
+        <h3 className="mt-3 mb-6 text-sm text-balance">
           Это действие необратимо. Операция будет удалена из вашей истории.
-        </p>
-        <div className="flex w-full gap-2">
+        </h3>
+        <div className="flex items-center justify-end gap-2">
           <button
-            className="flex-1 rounded-4xl bg-zinc-100 py-2.5 text-zinc-900 shadow-md transition-all duration-150 active:text-zinc-500"
+            className="rounded-3xl px-4 py-0.5 text-zinc-900 transition-all duration-150 hover:bg-zinc-900/10 active:text-zinc-900/70"
             onClick={onCancel}
           >
             Отменить
           </button>
           <button
-            className="flex-1 rounded-4xl bg-zinc-100 py-2.5 text-red-600 shadow-md transition-all duration-150 active:text-red-400"
+            className="rounded-3xl px-4 py-0.5 text-red-500 transition-all duration-150 hover:bg-red-500/10 active:bg-red-500/10 active:text-red-500/70"
             onClick={onConfirm}
           >
             Удалить
