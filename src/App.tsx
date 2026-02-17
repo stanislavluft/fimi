@@ -94,25 +94,23 @@ function App() {
   };
 
   return (
-    <>
-      <div>
-        <h1>Finance Tracker React</h1>
-        <Modal
-          isOpen={modal.mode !== 'closed'}
-          onClose={() => setModal({ mode: 'closed' })}
-          modalTitle={getModalTitle(modal)}
-        >
-          {renderModal(modal, { addOperation, updateOperation, deleteOperation })}
-        </Modal>
-        <button onClick={() => setModal({ mode: 'create' })}>Новая операция</button>
-        <OperationList
-          operations={operations}
-          onUpdateSubmit={(operation: Operation) => {
-            setModal({ mode: 'update', data: operation });
-          }}
-        />
-      </div>
-    </>
+    <div>
+      <h1>Finance Tracker React</h1>
+      <Modal
+        isOpen={modal.mode !== 'closed'}
+        onClose={() => setModal({ mode: 'closed' })}
+        modalTitle={getModalTitle(modal)}
+      >
+        {renderModal(modal, { addOperation, updateOperation, deleteOperation })}
+      </Modal>
+      <button onClick={() => setModal({ mode: 'create' })}>Новая операция</button>
+      <OperationList
+        operations={operations}
+        onUpdateSubmit={(operation: Operation) => {
+          setModal({ mode: 'update', data: operation });
+        }}
+      />
+    </div>
   );
 }
 
