@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import type { Operation, OperationFormData, OperationType } from '../types';
+import type { Operation, OperationFormData, OperationType } from '@/types';
 import { format, parseISO } from 'date-fns';
 import { Trash } from 'lucide-react';
 

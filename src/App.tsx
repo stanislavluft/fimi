@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import type { Operation, OperationFormData, ModalState, ModalActions } from './types';
-import OperationForm from './components/OperationForm';
-import OperationList from './components/OperationList';
-import ConfirmDelete from './components/ConfirmDelete';
-import Modal from './components/Modal';
+import OperationForm from '@/components/OperationForm';
+import OperationList from '@/components/OperationList';
+import ConfirmDelete from '@/components/ConfirmDelete';
+import Modal from '@/components/Modal';
 import { v7 as uuidv7 } from 'uuid';
 
 function App() {
