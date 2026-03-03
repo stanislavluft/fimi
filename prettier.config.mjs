@@ -1,5 +1,6 @@
 export default {
   plugins: ['prettier-plugin-tailwindcss'],
+  tailwindFunctions: ['cn'],
   tabWidth: 2,
   useTabs: false,
   semi: true,
