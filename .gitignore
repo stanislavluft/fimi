@@ -28,3 +28,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+TASKS.md
+page-layouts
