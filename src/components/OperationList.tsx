@@ -1,5 +1,6 @@
 import type { Operation } from '../types';
 import { format, parseISO } from 'date-fns';
+import { fromMinor } from '@/lib/money';
 
 interface OperationListProps {
   operations: Operation[];
@@ -16,7 +17,7 @@ function OperationList({ operations, onUpdateSubmit }: OperationListProps) {
           key={operation.id}
         >
           <span>{operation.category}:</span>
-          <span>{operation.amount} RUB</span>
+          <span>{fromMinor(operation.amountMinor)} RUB</span>
           <time dateTime={operation.dateTime}>
             {format(parseISO(operation.dateTime), 'dd.MM.yyyy, HH:mm')}
           </time>

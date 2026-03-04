@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import type { Operation, OperationFormData, OperationType } from '@/types';
 import { format, parseISO } from 'date-fns';
 import { Trash } from 'lucide-react';
+import { fromMinor, toMinor } from '@/lib/money';
 
 interface OperationFormProps {
   onSubmit: (formData: OperationFormData) => void;
@@ -10,7 +11,7 @@ interface OperationFormProps {
 }
 
 function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormProps) {
-  const [amount, setAmount] = useState(updateData?.amountMinor || '');
+  const [amount, setAmount] = useState<string>(updateData ? fromMinor(updateData.amountMinor) : '');
   const [category, setCategory] = useState(updateData?.category || '');
   const [type, setType] = useState<OperationType>(updateData?.type || 'income');
   const [description, setDescription] = useState(updateData?.description || '');
@@ -25,7 +26,7 @@ function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormP
     e.preventDefault();
 
     const isoDate = parseISO(dateTime).toISOString();
-    onSubmit({ amountMinor: +amount, category, type, dateTime: isoDate, description });
+    onSubmit({ amountMinor: toMinor(amount), category, type, dateTime: isoDate, description });
 
     setAmount('');
     setCategory('');
@@ -41,7 +42,7 @@ function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormP
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           id="inputAmount"
-          type="string"
+          type="text"
           inputMode="numeric"
           placeholder="0.00"
           required
