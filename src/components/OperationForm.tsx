@@ -10,7 +10,7 @@ interface OperationFormProps {
 }
 
 function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormProps) {
-  const [amount, setAmount] = useState(updateData?.amount || '');
+  const [amount, setAmount] = useState(updateData?.amountMinor || '');
   const [category, setCategory] = useState(updateData?.category || '');
   const [type, setType] = useState<OperationType>(updateData?.type || 'income');
   const [description, setDescription] = useState(updateData?.description || '');
@@ -25,7 +25,7 @@ function OperationForm({ onSubmit, onDeleteRequest, updateData }: OperationFormP
     e.preventDefault();
 
     const isoDate = parseISO(dateTime).toISOString();
-    onSubmit({ amount: +amount, category, type, dateTime: isoDate, description });
+    onSubmit({ amountMinor: +amount, category, type, dateTime: isoDate, description });
 
     setAmount('');
     setCategory('');

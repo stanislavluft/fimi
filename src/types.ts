@@ -1,8 +1,9 @@
-export type OperationType = 'income' | 'expense';
+//Operation
+export type OperationType = 'income' | 'expense' | 'transfer';
 
 export interface Operation {
   id: string;
-  amount: number;
+  amountMinor: number;
   category: string;
   type: OperationType;
   dateTime: string;
@@ -11,6 +12,7 @@ export interface Operation {
 
 export type OperationFormData = Omit<Operation, 'id'>;
 
+//Modal
 export type ModalState =
   | { mode: 'closed' }
   | { mode: 'create' }
