@@ -16,9 +16,3 @@ export type ModalState =
   | { mode: 'create' }
   | { mode: 'update'; data: Operation }
   | { mode: 'confirmDelete'; data: Operation };
-
-export type ModalActions = {
-  addOperation: (formData: OperationFormData) => void;
-  updateOperation: (formData: OperationFormData) => void;
-  deleteOperation: (id: string) => void;
-};
