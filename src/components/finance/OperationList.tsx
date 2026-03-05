@@ -1,4 +1,4 @@
-import type { Operation } from '../types';
+import type { Operation } from '@/types';
 import { format, parseISO } from 'date-fns';
 import { fromMinor } from '@/lib/money';
 

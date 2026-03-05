@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ConfirmDelete from '@/components/ConfirmDelete';
-import Modal from '@/components/Modal';
-import OperationForm from '@/components/OperationForm';
-import OperationList from '@/components/OperationList';
+import ConfirmDelete from '@/components/finance/ConfirmDelete';
+import Modal from '@/components/ui/Modal';
+import OperationForm from '@/components/finance/OperationForm';
+import OperationList from '@/components/finance/OperationList';
 import { useFinanceStore } from '@/store/financeStore';
 import type { ModalState, OperationFormData } from '@/types';
 
@@ -81,7 +81,7 @@ function OperationsPage() {
         <h1 className="text-2xl font-semibold">Operations</h1>
         <button
           type="button"
-          className="rounded-md bg-primary px-3 py-2 text-sm text-primary-foreground"
+          className="bg-primary text-primary-foreground rounded-md px-3 py-2 text-sm"
           onClick={() => setModal({ mode: 'create' })}
         >
           Новая операция
