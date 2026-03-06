@@ -1,8 +1,12 @@
-import { useState, type FormEvent } from 'react';
-import type { Operation, OperationFormData, OperationType } from '@/types';
+import { type FormEvent, useState } from 'react';
+
 import { format, parseISO } from 'date-fns';
 import { Trash } from 'lucide-react';
+
 import { fromMinor, toMinor } from '@/lib/money';
+
+import type { OperationType } from '@/constants/constants';
+import type { Operation, OperationFormData } from '@/types';
 
 interface OperationFormProps {
   onSubmit: (formData: OperationFormData) => void;

@@ -1,5 +1,5 @@
 //Operation
-export type OperationType = 'income' | 'expense' | 'transfer';
+import type { OperationType } from '@/constants/constants';
 
 export interface Operation {
   id: string;
