@@ -6,7 +6,7 @@ import { Trash } from 'lucide-react';
 import { fromMinor, toMinor } from '@/lib/money';
 
 import type { OperationType } from '@/constants/constants';
-import type { Operation, OperationFormData } from '@/types';
+import type { Operation, OperationFormData } from '@/types/types';
 
 interface OperationFormProps {
   onSubmit: (formData: OperationFormData) => void;

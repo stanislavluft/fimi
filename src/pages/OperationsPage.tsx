@@ -6,7 +6,7 @@ import OperationList from '@/components/finance/OperationList';
 import Modal from '@/components/ui/Modal';
 
 import { useFinanceStore } from '@/store/financeStore';
-import type { ModalState, OperationFormData } from '@/types';
+import type { ModalState, OperationFormData } from '@/types/types';
 
 function OperationsPage() {
   const operations = useFinanceStore((state) => state.operations);

@@ -2,8 +2,7 @@ import { v7 as uuidv7 } from 'uuid';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import type { Operation } from '@/types';
-import type { OperationFormData } from '@/types';
+import type { Operation, OperationFormData } from '@/types/types';
 
 interface FinanceState {
   operations: Operation[];
