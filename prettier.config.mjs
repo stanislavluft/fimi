@@ -1,6 +1,17 @@
 export default {
-  plugins: ['prettier-plugin-tailwindcss'],
-  tailwindFunctions: ['cn'],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
+  importOrder: [
+    '^react',
+    '<THIRD_PARTY_MODULES>',
+    '^@/components/(.*)$',
+    '^@/lib/(.*)$',
+    '^@/hooks/(.*)$',
+    '^@/(.*)$',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  tailwindFunctions: ['cn', 'cva'],
   tabWidth: 2,
   useTabs: false,
   semi: true,
@@ -9,4 +20,5 @@ export default {
   bracketSpacing: true,
   arrowParens: 'always',
   printWidth: 100,
+  endOfLine: 'lf',
 };
