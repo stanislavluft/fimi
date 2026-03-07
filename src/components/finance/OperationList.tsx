@@ -1,6 +1,8 @@
-import type { Operation } from '@/types';
 import { format, parseISO } from 'date-fns';
+
 import { fromMinor } from '@/lib/money';
+
+import type { Operation } from '@/types';
 
 interface OperationListProps {
   operations: Operation[];

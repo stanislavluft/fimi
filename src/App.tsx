@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+
 import AppLayout from '@/layouts/AppLayout';
 import AnalyticsPage from '@/pages/AnalyticsPage';
 import DashboardPage from '@/pages/DashboardPage';

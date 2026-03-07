@@ -1,4 +1,4 @@
-import { NavLink, Outlet, Link } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 type NavItem = {
   path: '/dashboard' | '/operations' | '/analytics' | '/settings';
