@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { OPERATION_TYPES } from '@/constants/constants';
+import { OPERATION_TYPES } from '@/constants/operation-types';
 
 export const operationValues = OPERATION_TYPES.map((op) => op.value) as [string, ...string[]];
 

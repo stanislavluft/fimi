@@ -1,5 +1,5 @@
 //Operation
-import type { OperationType } from '@/constants/constants';
+import type { OperationType } from '@/constants/operation-types';
 
 export interface Operation {
   id: string;
