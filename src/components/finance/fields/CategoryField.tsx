@@ -17,7 +17,7 @@ import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 
 import { BASE_CATEGORIES } from '@/constants/categories';
 import { OPERATION_TYPES } from '@/constants/operation-types';
-import type { OperationFormValues } from '@/schemas/schema';
+import type { OperationFormValues } from '@/schemas/operation-schema';
 
 const GROUPED_CATEGORIES = OPERATION_TYPES.map((op) => ({
   type: op.value,

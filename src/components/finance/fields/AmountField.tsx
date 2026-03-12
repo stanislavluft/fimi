@@ -4,7 +4,7 @@ import { NumericFormat } from 'react-number-format';
 
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 
-import type { OperationFormValues } from '@/schemas/schema';
+import type { OperationFormValues } from '@/schemas/operation-schema';
 
 function AmountField() {
   const { control } = useFormContext<OperationFormValues>();

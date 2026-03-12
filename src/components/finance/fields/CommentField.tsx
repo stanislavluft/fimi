@@ -4,7 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 
-import type { OperationFormValues } from '@/schemas/schema';
+import type { OperationFormValues } from '@/schemas/operation-schema';
 
 function CommentField() {
   const { control } = useFormContext<OperationFormValues>();

@@ -10,7 +10,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-import type { OperationFormValues } from '@/schemas/schema';
+import type { OperationFormValues } from '@/schemas/operation-schema';
 
 function DateTimeField() {
   const { control } = useFormContext<OperationFormValues>();
