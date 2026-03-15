@@ -5,8 +5,7 @@ import { type DayButton, DayPicker, type Locale, getDefaultClassNames } from 're
 
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import { buttonVariants } from '@/components/ui/button-variants';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 import { cn } from '@/lib/utils';
 
