@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
+import CustomSidebarTrigger from '@/components/CustomSidebarTrigger';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import {
   Sidebar,
@@ -21,7 +22,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-  SidebarTrigger,
+  useSidebar,
 } from '@/components/ui/sidebar';
 
 type NavItem = {
@@ -38,20 +39,33 @@ const navigation: NavItem[] = [
 
 export function AppSidebar() {
   const { pathname } = useLocation();
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleNavClick = () => {
+    if (isMobile) setOpenMobile(false);
+  };
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <div className="flex items-center justify-between px-2 py-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
-          <Link
-            to="/"
-            className="text-sidebar-foreground tracking-light text-2xl font-semibold group-data-[collapsible=icon]:hidden"
-          >
-            fimi
-          </Link>
-          <SidebarTrigger />
-        </div>
+      {/* Mobile */}
+      <SidebarHeader className="flex-row items-center justify-between px-4 pt-4 md:hidden">
+        <Link to="/" className="text-sidebar-foreground text-2xl font-semibold">
+          fimi
+        </Link>
+        <CustomSidebarTrigger />
       </SidebarHeader>
+
+      {/* Desktop */}
+      <SidebarHeader className="hidden flex-row items-center justify-between px-4 pt-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 md:flex">
+        <Link
+          to="/"
+          className="text-sidebar-foreground text-2xl font-semibold group-data-[collapsible=icon]:hidden"
+        >
+          fimi
+        </Link>
+        <CustomSidebarTrigger />
+      </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -63,7 +77,7 @@ export function AppSidebar() {
                     tooltip={item.label}
                     isActive={pathname === item.path || undefined}
                   >
-                    <Link to={item.path}>
+                    <Link onClick={handleNavClick} to={item.path}>
                       <item.icon strokeWidth={1.5} />
                       <span>{item.label}</span>
                     </Link>
@@ -74,6 +88,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter className="pb-4">
         <SidebarMenu>
           <SidebarMenuItem>
@@ -85,7 +100,7 @@ export function AppSidebar() {
               tooltip="Settings"
               isActive={pathname === '/settings' || undefined}
             >
-              <Link to="/settings">
+              <Link onClick={handleNavClick} to="/settings">
                 <SettingsIcon strokeWidth={1.5} />
                 <span>Settings</span>
               </Link>
