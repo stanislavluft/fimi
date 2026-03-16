@@ -49,7 +49,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       {/* Mobile */}
       <SidebarHeader className="flex-row items-center justify-between px-4 pt-4 md:hidden">
-        <Link to="/" className="text-sidebar-foreground text-2xl font-semibold">
+        <Link to="/" className="text-foreground text-2xl font-semibold tracking-wide">
           fimi
         </Link>
         <CustomSidebarTrigger />
@@ -59,7 +59,7 @@ export function AppSidebar() {
       <SidebarHeader className="hidden flex-row items-center justify-between px-4 pt-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 md:flex">
         <Link
           to="/"
-          className="text-sidebar-foreground text-2xl font-semibold group-data-[collapsible=icon]:hidden"
+          className="text-foreground text-2xl font-semibold tracking-wide group-data-[collapsible=icon]:hidden"
         >
           fimi
         </Link>
