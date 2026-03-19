@@ -5,6 +5,7 @@ import {
   ArrowLeftRightIcon,
   ChartNoAxesCombined,
   LayoutDashboard,
+  PiggyBank,
   SettingsIcon,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -26,7 +27,7 @@ import {
 } from '@/components/ui/sidebar';
 
 type NavItem = {
-  path: '/dashboard' | '/operations' | '/analytics' | '/settings';
+  path: '/dashboard' | '/operations' | '/analytics' | '/savings' | '/settings';
   label: string;
   icon: LucideIcon;
 };
@@ -35,6 +36,7 @@ const navigation: NavItem[] = [
   { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/operations', label: 'Operations', icon: ArrowLeftRightIcon },
   { path: '/analytics', label: 'Analytics', icon: ChartNoAxesCombined },
+  { path: '/savings', label: 'Savings', icon: PiggyBank },
 ];
 
 export function AppSidebar() {
