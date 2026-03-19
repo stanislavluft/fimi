@@ -1,7 +1,7 @@
 // AppLayout.tsx
 import { Outlet } from 'react-router-dom';
 
-import CustomSidebarTrigger from '@/components/CustomSidebarTrigger';
+import CustomSidebarTrigger from '@/components/shared/CustomSidebarTrigger';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 

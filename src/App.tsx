@@ -6,7 +6,7 @@ import DashboardPage from '@/pages/DashboardPage';
 import OperationsPage from '@/pages/OperationsPage';
 import SettingsPage from '@/pages/SettingsPage';
 
-import { ThemeProvider } from './components/ThemeProvider';
+import { ThemeProvider } from './components/shared/ThemeProvider';
 
 function App() {
   return (

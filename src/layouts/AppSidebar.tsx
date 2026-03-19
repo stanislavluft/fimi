@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-import CustomSidebarTrigger from '@/components/CustomSidebarTrigger';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import CustomSidebarTrigger from '@/components/shared/CustomSidebarTrigger';
+import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import {
   Sidebar,
   SidebarContent,

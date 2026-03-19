@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ConfirmDelete from '@/components/finance/ConfirmDelete';
 import OperationForm from '@/components/finance/OperationForm';
 import OperationList from '@/components/finance/OperationList';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/components/shared/Modal';
 
 import { useFinanceStore } from '@/store/financeStore';
 import type { ModalState, OperationFormData } from '@/types/types';

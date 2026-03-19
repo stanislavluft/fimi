@@ -1,4 +1,4 @@
-import ComingSoonPlaceholder from '@/components/ComingSoonPlaceholder';
+import ComingSoonPlaceholder from '@/components/shared/ComingSoonPlaceholder';
 
 function AnalyticsPage() {
   return <ComingSoonPlaceholder title="Analytics" />;
