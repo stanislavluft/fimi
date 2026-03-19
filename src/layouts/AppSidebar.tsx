@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import {
   ArrowLeftRightIcon,
-  ChartNoAxesCombined,
+  ChartPie,
   LayoutDashboard,
   PiggyBank,
   SettingsIcon,
@@ -35,7 +35,7 @@ type NavItem = {
 const navigation: NavItem[] = [
   { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/operations', label: 'Operations', icon: ArrowLeftRightIcon },
-  { path: '/analytics', label: 'Analytics', icon: ChartNoAxesCombined },
+  { path: '/analytics', label: 'Analytics', icon: ChartPie },
   { path: '/savings', label: 'Savings', icon: PiggyBank },
 ];
 
