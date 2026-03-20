@@ -23,6 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  SidebarSeparator,
   useSidebar,
 } from '@/components/ui/sidebar';
 
@@ -50,7 +51,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       {/* Mobile */}
-      <SidebarHeader className="h-12 flex-row items-center justify-between px-4 md:hidden">
+      <SidebarHeader className="h-16 flex-row items-center justify-between px-4 md:hidden">
         <Link to="/" className="text-foreground text-2xl font-semibold tracking-wide">
           fimi
         </Link>
@@ -58,7 +59,7 @@ export function AppSidebar() {
       </SidebarHeader>
 
       {/* Desktop */}
-      <SidebarHeader className="hidden h-12 flex-row items-center justify-between px-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 md:flex">
+      <SidebarHeader className="hidden h-16 flex-row items-center justify-between px-4 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 md:flex">
         <Link
           to="/"
           className="text-foreground text-2xl font-semibold tracking-wide group-data-[collapsible=icon]:hidden"
@@ -67,8 +68,8 @@ export function AppSidebar() {
         </Link>
         <CustomSidebarTrigger />
       </SidebarHeader>
-
-      <SidebarContent>
+      <SidebarSeparator />
+      <SidebarContent className="py-2">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -90,8 +91,8 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarFooter className="pb-4">
+      <SidebarSeparator />
+      <SidebarFooter className="py-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <ThemeToggle />
