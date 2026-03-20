@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import ConfirmDelete from '@/components/finance/ConfirmDelete';
+import ConfirmDelete from '@/components/shared/ConfirmDelete';
 import OperationForm from '@/components/finance/OperationForm';
 import OperationList from '@/components/finance/OperationList';
 import Modal from '@/components/shared/Modal';
