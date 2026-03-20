@@ -20,7 +20,7 @@ function AppLayout() {
     <TooltipProvider>
       <SidebarProvider>
         <AppSidebar />
-        <main className="flex-1 p-4">
+        <main className="flex-1 p-10">
           <MobileHeader />
           <Outlet />
         </main>
