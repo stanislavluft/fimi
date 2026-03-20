@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { useSidebar } from '@/components/ui/sidebar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
+import { cn } from '@/lib/utils';
+
 function CustomSidebarTrigger({ className }: { className?: string }) {
   const { toggleSidebar, state, isMobile, openMobile } = useSidebar();
 
@@ -12,8 +14,16 @@ function CustomSidebarTrigger({ className }: { className?: string }) {
   const Icon = isMobile ? (isOpen ? XIcon : TextAlignJustify) : PanelLeftIcon;
 
   const button = (
-    <Button variant="ghost" size="icon-sm" onClick={toggleSidebar} className={className}>
-      <Icon strokeWidth={1.5} />
+    <Button
+      variant="ghost"
+      size="icon-lg"
+      onClick={toggleSidebar}
+      className={cn(
+        'hover:bg-sidebar-hover hover:text-sidebar-foreground text-muted-foreground rounded-md',
+        className,
+      )}
+    >
+      <Icon strokeWidth={1.5} className="h-5! w-5!" />
       <span className="sr-only">{tooltipText}</span>
     </Button>
   );
