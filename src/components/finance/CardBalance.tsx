@@ -21,7 +21,7 @@ function CardBalance({ className }: CardBalanceProps) {
   return (
     <div
       className={cn(
-        'bg-accent text-accent-foreground flex h-50 flex-col items-center justify-center gap-4 rounded-2xl p-8',
+        'bg-accent text-accent-foreground flex h-full w-full flex-col items-center justify-center gap-4 rounded-2xl p-8',
         className,
       )}
     >
