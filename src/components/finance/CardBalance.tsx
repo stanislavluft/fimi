@@ -10,12 +10,12 @@ interface CardBalanceProps {
 }
 
 function CardBalance({ className }: CardBalanceProps) {
-  const operations = useFinanceStore((state) => state.operations);
-
-  const balance = fromMinor(
-    operations.reduce((sum, op) => {
-      return op.type === 'income' ? sum + op.amountMinor : sum - op.amountMinor;
-    }, 0),
+  const balance = useFinanceStore((state) =>
+    fromMinor(
+      state.operations.reduce((sum, op) => {
+        return op.type === 'income' ? sum + op.amountMinor : sum - op.amountMinor;
+      }, 0),
+    ),
   );
 
   return (
