@@ -44,7 +44,13 @@ export function MonthlyCard({
   );
 
   const amountMinor = variant === 'income' ? income : expense;
-  const percentage = variant === 'income' ? 1 : income > 0 ? Math.min(expense / income, 1) : 0;
+
+  const percentage = (() => {
+    if (income === 0) return 0;
+    if (variant === 'income') return 1;
+    return Math.min(expense / income, 1);
+  })();
+
   const safePercentage = Math.max(0, Math.min(percentage, 1));
 
   const chartData = [
