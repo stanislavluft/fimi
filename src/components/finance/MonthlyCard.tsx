@@ -1,11 +1,9 @@
-import { NumericFormat } from 'react-number-format';
-
 import { getMonth, getYear } from 'date-fns';
 import { Label, Pie, PieChart } from 'recharts';
 
+import FormattedAmount from '@/components/shared/FormattedAmount';
 import { type ChartConfig, ChartContainer } from '@/components/ui/chart';
 
-import { fromMinor } from '@/lib/money';
 import { cn } from '@/lib/utils';
 
 import type { OperationType } from '@/constants/operation-types';
@@ -110,16 +108,9 @@ export function MonthlyCard({
         </PieChart>
       </ChartContainer>
       <div className="flex flex-col items-center justify-center">
-        <NumericFormat
-          value={fromMinor(amountMinor)}
-          displayType="text"
-          thousandSeparator=","
-          decimalScale={2}
-          fixedDecimalScale
-          prefix="$"
-          renderText={(value) => (
-            <span className="text-foreground text-md font-semibold tracking-wide">{value}</span>
-          )}
+        <FormattedAmount
+          amountMinor={amountMinor}
+          className="text-foreground text-md font-semibold tracking-wide"
         />
         <div className="justify-cente relative flex items-center gap-1 text-xs font-medium">
           <span className="text-muted-foreground">{description}</span>

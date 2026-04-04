@@ -1,6 +1,5 @@
-import { NumericFormat } from 'react-number-format';
+import FormattedAmount from '@/components/shared/FormattedAmount';
 
-import { fromMinor } from '@/lib/money';
 import { cn } from '@/lib/utils';
 
 import { useFinanceStore } from '@/store/financeStore';
@@ -10,12 +9,10 @@ interface CardBalanceProps {
 }
 
 function CardBalance({ className }: CardBalanceProps) {
-  const balance = useFinanceStore((state) =>
-    fromMinor(
-      state.operations.reduce((sum, op) => {
-        return op.type === 'income' ? sum + op.amountMinor : sum - op.amountMinor;
-      }, 0),
-    ),
+  const balanceMinor = useFinanceStore((state) =>
+    state.operations.reduce((sum, op) => {
+      return op.type === 'income' ? sum + op.amountMinor : sum - op.amountMinor;
+    }, 0),
   );
 
   return (
@@ -26,17 +23,9 @@ function CardBalance({ className }: CardBalanceProps) {
       )}
     >
       <p className="text-xs tracking-widest opacity-60">TOTAL BALANCE</p>
-      <NumericFormat
-        value={balance}
-        displayType="text"
-        thousandSeparator=","
-        decimalSeparator="."
-        decimalScale={2}
-        fixedDecimalScale
-        prefix="$"
-        renderText={(value) => (
-          <span className="tracking-light text-4xl font-semibold">{value}</span>
-        )}
+      <FormattedAmount
+        amountMinor={balanceMinor}
+        className="tracking-light text-4xl font-semibold"
       />
     </div>
   );
