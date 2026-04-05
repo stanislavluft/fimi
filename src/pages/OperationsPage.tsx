@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-import ConfirmDelete from '@/components/shared/ConfirmDelete';
 import OperationForm from '@/components/finance/OperationForm';
 import OperationList from '@/components/finance/OperationList';
+import ConfirmDelete from '@/components/shared/ConfirmDelete';
 import Modal from '@/components/shared/Modal';
+import { Button } from '@/components/ui/button';
 
 import { useFinanceStore } from '@/store/financeStore';
 import type { ModalState, OperationFormData } from '@/types/types';
@@ -81,13 +82,9 @@ function OperationsPage() {
     <section className="space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Operations</h1>
-        <button
-          type="button"
-          className="bg-primary text-primary-foreground rounded-md px-3 py-2 text-sm"
-          onClick={() => setModal({ mode: 'create' })}
-        >
-          Новая операция
-        </button>
+        <Button type="button" size="lg" onClick={() => setModal({ mode: 'create' })}>
+          New Operation
+        </Button>
       </div>
       <Modal
         isOpen={modal.mode !== 'closed'}
@@ -98,7 +95,8 @@ function OperationsPage() {
       </Modal>
       <OperationList
         operations={operations}
-        onUpdateSubmit={(operation) => {
+        title="All Transactions"
+        onOperationSelect={(operation) => {
           setModal({ mode: 'update', data: operation });
         }}
       />
