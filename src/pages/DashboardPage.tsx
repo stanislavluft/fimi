@@ -37,7 +37,7 @@ function DashboardPage() {
         </div>
         <OperationList
           operations={operations}
-          limit={10}
+          limit={3}
           action={
             <Link
               to="/operations"
