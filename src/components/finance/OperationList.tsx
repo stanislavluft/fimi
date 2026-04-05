@@ -30,7 +30,7 @@ const emptyDescription = 'Add your first transaction to start tracking your cash
 function OperationList({
   operations,
   onOperationSelect,
-  title = 'Recent Transactions',
+  title = 'Recent Operations',
   limit,
   action,
   className,

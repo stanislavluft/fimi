@@ -95,7 +95,7 @@ function OperationsPage() {
       </Modal>
       <OperationList
         operations={operations}
-        title="All Transactions"
+        title="All Operations"
         onOperationSelect={(operation) => {
           setModal({ mode: 'update', data: operation });
         }}
