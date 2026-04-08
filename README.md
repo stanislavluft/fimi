@@ -1,3 +1,5 @@
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fstanislavluft%2Ffimi)
+
 # fimi
 
 `fimi` is a minimalist frontend personal finance tracker built with React, TypeScript, and Vite. It helps users record income and expenses, monitor the current balance, and quickly review recent activity on the dashboard.
