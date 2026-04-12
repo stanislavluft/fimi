@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import AppLayout from '@/layouts/AppLayout';
 import AnalyticsPage from '@/pages/AnalyticsPage';
@@ -9,7 +10,24 @@ import SettingsPage from '@/pages/SettingsPage';
 
 import { ThemeProvider } from './components/shared/ThemeProvider';
 
+const titles: Record<string, string> = {
+  '/dashboard': 'Dashboard',
+  '/operations': 'Operations',
+  '/analytics': 'Analytics',
+  '/savings': 'Savings',
+  '/settings': 'Settings',
+};
+
+function usePageTitle() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const page = titles[pathname];
+    document.title = page ? `${page} — fimi` : 'fimi';
+  }, [pathname]);
+}
+
 function App() {
+  usePageTitle();
   return (
     <ThemeProvider>
       <Routes>
