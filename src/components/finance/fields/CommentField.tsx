@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
+import { FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 
 import type { OperationFormValues } from '@/schemas/operation-schema';
@@ -15,19 +15,22 @@ function CommentField() {
       name="comment"
       control={control}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={id} className="text-muted-foreground text-sm">
-            Комментарий
-          </FieldLabel>
-          <Input
-            {...field}
-            aria-invalid={fieldState.invalid}
-            id={id}
-            type="text"
-            placeholder="Необязательно"
-          />
-          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-        </Field>
+        <div className="flex items-center gap-4 py-3">
+          <label htmlFor={id} className="text-foreground w-20 shrink-0 text-sm">
+            Description
+          </label>
+          <div className="flex flex-1 flex-col pl-4">
+            <Input
+              {...field}
+              id={id}
+              type="text"
+              aria-invalid={fieldState.invalid}
+              placeholder="Optional"
+              className="placeholder:text-muted-foreground bg-transparent pl-2 text-sm shadow-none"
+            />
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </div>
+        </div>
       )}
     />
   );

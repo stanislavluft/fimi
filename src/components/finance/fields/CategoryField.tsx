@@ -13,7 +13,7 @@ import {
   ComboboxList,
   ComboboxSeparator,
 } from '@/components/ui/combobox';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
+import { FieldError } from '@/components/ui/field';
 
 import { BASE_CATEGORIES } from '@/constants/categories';
 import { OPERATION_TYPES } from '@/constants/operation-types';
@@ -37,37 +37,46 @@ function CategoryField() {
         const selectedCategory = BASE_CATEGORIES.find((cat) => cat.id === field.value);
 
         return (
-          <Field data-invalid={fieldState.invalid}>
-            <FieldLabel htmlFor={id}>Категория</FieldLabel>
-            <Combobox items={GROUPED_CATEGORIES} value={field.value} onValueChange={field.onChange}>
-              <ComboboxInput
-                id={id}
-                placeholder="Выберите категорию"
-                aria-invalid={fieldState.invalid}
-                value={selectedCategory?.label ?? ''}
-                showClear
-              />
-              <ComboboxContent>
-                <ComboboxEmpty>Ничего не найдено</ComboboxEmpty>
-                <ComboboxList>
-                  {(group, index) => (
-                    <ComboboxGroup key={group.type} items={group.items}>
-                      <ComboboxLabel>{group.label}</ComboboxLabel>
-                      <ComboboxCollection>
-                        {(item) => (
-                          <ComboboxItem key={item.id} value={item.id}>
-                            {item.label}
-                          </ComboboxItem>
-                        )}
-                      </ComboboxCollection>
-                      {index < GROUPED_CATEGORIES.length - 1 && <ComboboxSeparator />}
-                    </ComboboxGroup>
-                  )}
-                </ComboboxList>
-              </ComboboxContent>
-            </Combobox>
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
+          <div className="flex items-center gap-4 py-3">
+            <label htmlFor={id} className="text-foreground w-20 shrink-0 text-sm">
+              Category
+            </label>
+            <div className="flex flex-1 flex-col pl-4">
+              <Combobox
+                items={GROUPED_CATEGORIES}
+                value={field.value}
+                onValueChange={field.onChange}
+              >
+                <ComboboxInput
+                  id={id}
+                  placeholder="Select"
+                  aria-invalid={fieldState.invalid}
+                  value={selectedCategory?.label ?? ''}
+                  showClear
+                  className="text-right"
+                />
+                <ComboboxContent>
+                  <ComboboxEmpty>Nothing found</ComboboxEmpty>
+                  <ComboboxList>
+                    {(group, index) => (
+                      <ComboboxGroup key={group.type} items={group.items}>
+                        <ComboboxLabel>{group.label}</ComboboxLabel>
+                        <ComboboxCollection>
+                          {(item) => (
+                            <ComboboxItem key={item.id} value={item.id}>
+                              {item.label}
+                            </ComboboxItem>
+                          )}
+                        </ComboboxCollection>
+                        {index < GROUPED_CATEGORIES.length - 1 && <ComboboxSeparator />}
+                      </ComboboxGroup>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
+              </Combobox>
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </div>
+          </div>
         );
       }}
     />
