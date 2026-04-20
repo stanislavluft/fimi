@@ -20,7 +20,7 @@ function AppLayout() {
     <TooltipProvider>
       <SidebarProvider>
         <AppSidebar />
-        <main className="bg-secondary flex-1 p-10">
+        <main className="bg-secondary dark:bg-background flex-1 p-10">
           <MobileHeader />
           <Outlet />
         </main>
