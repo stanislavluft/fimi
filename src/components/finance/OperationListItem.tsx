@@ -31,7 +31,7 @@ const typeMeta = {
 function OperationListItem({ operation, onSelect }: OperationListItemProps) {
   const meta = typeMeta[operation.type];
   const TypeIcon = meta.icon;
-  const categoryMeta = BASE_CATEGORIES.find((category) => category.label === operation.category);
+  const categoryMeta = BASE_CATEGORIES.find((category) => category.id === operation.category);
   const CategoryIcon = categoryMeta?.icon ?? CircleEllipsis;
 
   const content = (
@@ -53,7 +53,9 @@ function OperationListItem({ operation, onSelect }: OperationListItemProps) {
             <CategoryIcon className="size-5" strokeWidth={1.8} />
           </div>
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">{operation.category}</p>
+            <p className="truncate text-sm font-semibold">
+              {categoryMeta?.label ?? operation.category}
+            </p>
             <p className="text-muted-foreground truncate text-sm">
               {operation.description || 'No comment'}
             </p>
