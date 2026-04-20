@@ -32,7 +32,7 @@ function Modal({ isOpen, onClose, modalTitle, children }: ModalProps) {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="bg-foreground/10 absolute inset-0 backdrop-blur-xs" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/10 backdrop-blur-xs" onClick={onClose} />
       <article
         aria-labelledby="modal-title"
         role="dialog"
