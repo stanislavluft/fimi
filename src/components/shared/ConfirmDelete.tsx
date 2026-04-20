@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+
 interface ConfirmDeleteProps {
   onCancel: () => void;
   onConfirm: () => void;
@@ -10,18 +12,12 @@ function ConfirmDelete({ onCancel, onConfirm }: ConfirmDeleteProps) {
         This action is irreversible. The operation will be removed from your history.
       </h3>
       <div className="flex items-center justify-end gap-2">
-        <button
-          className="rounded-3xl px-4 py-0.5 text-zinc-900 transition-all duration-150 hover:bg-zinc-900/10 active:text-zinc-900/70"
-          onClick={onCancel}
-        >
+        <Button variant="ghost" onClick={onCancel} size="lg">
           Cancel
-        </button>
-        <button
-          className="rounded-3xl px-4 py-0.5 text-red-500 transition-all duration-150 hover:bg-red-500/10 active:bg-red-500/10 active:text-red-500/70"
-          onClick={onConfirm}
-        >
+        </Button>
+        <Button variant="destructive" onClick={onConfirm} size="lg">
           Delete
-        </button>
+        </Button>
       </div>
     </div>
   );
