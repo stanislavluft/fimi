@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 
 import { X } from 'lucide-react';
 
+import { Button } from '@/components/ui/button';
+
 interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
@@ -17,9 +19,7 @@ function Modal({ isOpen, onClose, modalTitle, children }: ModalProps) {
     document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -32,25 +32,23 @@ function Modal({ isOpen, onClose, modalTitle, children }: ModalProps) {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/10 backdrop-blur-xs" onClick={onClose}></div>
+      <div className="bg-foreground/10 absolute inset-0 backdrop-blur-xs" onClick={onClose} />
       <article
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
-        className="relative m-6 flex max-h-[90vh] w-full max-w-sm flex-col rounded-4xl border border-zinc-300 bg-white p-4 shadow-2xl"
+        className="border-border bg-card relative m-6 flex max-h-[90vh] w-full max-w-sm flex-col rounded-4xl border p-4 shadow-2xl"
       >
         <header className="flex items-center justify-between pl-2">
-          <h2 id="modal-title" className="text-base font-semibold tracking-wide text-zinc-700">
+          <h2
+            id="modal-title"
+            className="text-card-foreground text-base font-semibold tracking-wide"
+          >
             {modalTitle}
           </h2>
-
-          <button
-            type="button"
-            className="flex cursor-pointer items-center justify-center rounded-full p-1.5 text-zinc-500 transition-all duration-150 active:bg-zinc-100"
-            onClick={onClose}
-          >
+          <Button variant="ghost" onClick={onClose} className="rounded-full" size="icon">
             <X size={20} />
-          </button>
+          </Button>
         </header>
         <section className="overflow-y-auto">{children}</section>
       </article>
