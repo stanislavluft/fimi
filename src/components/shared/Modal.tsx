@@ -39,7 +39,7 @@ function Modal({ isOpen, onClose, modalTitle, children }: ModalProps) {
         aria-modal="true"
         className="relative m-6 flex max-h-[90vh] w-full max-w-sm flex-col rounded-4xl border border-zinc-300 bg-white p-4 shadow-2xl"
       >
-        <header className="flex items-center justify-between">
+        <header className="flex items-center justify-between pl-2">
           <h2 id="modal-title" className="text-base font-semibold tracking-wide text-zinc-700">
             {modalTitle}
           </h2>
