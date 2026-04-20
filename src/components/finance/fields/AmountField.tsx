@@ -33,7 +33,7 @@ function AmountField() {
             onBlur={field.onBlur}
             name={field.name}
             getInputRef={field.ref}
-            className="text-foreground placeholder:text-muted-foreground w-full bg-transparent text-center text-3xl font-normal tracking-normal focus:outline-none"
+            className="text-foreground placeholder:text-muted-foreground my-3 w-full bg-transparent text-center text-3xl font-normal tracking-normal focus:outline-none"
           />
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
