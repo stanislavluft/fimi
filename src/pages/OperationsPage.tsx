@@ -43,11 +43,11 @@ function OperationsPage() {
       case 'closed':
         return '';
       case 'create':
-        return 'Новая операция';
+        return 'New Operation';
       case 'update':
-        return 'Редактирование операции';
+        return 'Editing an operation';
       case 'confirmDelete':
-        return 'Подтверждение действия';
+        return 'Delete operation';
     }
   };
 
