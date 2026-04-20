@@ -26,6 +26,7 @@ function AmountField() {
             thousandSeparator=" "
             decimalSeparator="."
             decimalScale={2}
+            fixedDecimalScale
             allowNegative={false}
             value={field.value ?? ''}
             onValueChange={({ floatValue }) => field.onChange(floatValue ?? undefined)}
